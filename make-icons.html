@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"><title>簿記2級 アイコン生成</title></head>
+<body style="font-family:sans-serif;padding:20px;background:#0c1838;color:#e2e8f0;">
+<h2 style="color:#fbbf24;">簿記2級 アイコン生成</h2>
+<canvas id="c192" width="192" height="192" style="border:1px solid #2a3a5c;margin:8px;"></canvas>
+<canvas id="c512" width="512" height="512" style="border:1px solid #2a3a5c;margin:8px;width:128px;height:128px;"></canvas>
+<br>
+<button onclick="dl('c192','icon-192.png')" style="margin:6px;padding:8px 16px;background:#fbbf24;color:#0c1838;border:none;cursor:pointer;font-weight:700;">icon-192.png をダウンロード</button>
+<button onclick="dl('c512','icon-512.png')" style="margin:6px;padding:8px 16px;background:#fbbf24;color:#0c1838;border:none;cursor:pointer;font-weight:700;">icon-512.png をダウンロード</button>
+<script>
+function draw(id){
+  const c=document.getElementById(id); const s=c.width; const ctx=c.getContext('2d');
+  const g=ctx.createLinearGradient(0,0,s,s); g.addColorStop(0,'#0c1838'); g.addColorStop(1,'#1e2f5c');
+  const r=s*0.18; ctx.beginPath();
+  ctx.moveTo(r,0);ctx.lineTo(s-r,0);ctx.quadraticCurveTo(s,0,s,r);ctx.lineTo(s,s-r);ctx.quadraticCurveTo(s,s,s-r,s);ctx.lineTo(r,s);ctx.quadraticCurveTo(0,s,0,s-r);ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);ctx.closePath();ctx.clip();
+  ctx.fillStyle=g; ctx.fillRect(0,0,s,s);
+  // 電卓風グリッド
+  ctx.strokeStyle='rgba(251,191,36,0.18)'; ctx.lineWidth=s*0.012;
+  for(let i=1;i<4;i++){ ctx.beginPath(); ctx.moveTo(s*0.2,s*(0.45+i*0.13)); ctx.lineTo(s*0.8,s*(0.45+i*0.13)); ctx.stroke(); }
+  // 簿記
+  ctx.fillStyle='#fbbf24'; ctx.font=`bold ${s*0.32}px 'Hiragino Mincho ProN',serif`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.shadowColor='rgba(251,191,36,0.5)'; ctx.shadowBlur=s*0.07;
+  ctx.fillText('簿記', s*0.5, s*0.36);
+  // 2級バッジ
+  ctx.shadowBlur=0; ctx.fillStyle='#38bdf8'; ctx.font=`bold ${s*0.2}px Arial,sans-serif`;
+  ctx.fillText('2級', s*0.5, s*0.7);
+}
+function dl(id,name){ const c=document.getElementById(id); const a=document.createElement('a'); a.download=name; a.href=c.toDataURL('image/png'); a.click(); }
+draw('c192'); draw('c512');
+</script>
+</body>
+</html>

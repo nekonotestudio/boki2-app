@@ -1,0 +1,14 @@
+{
+  "name": "簿記2級 一問一答",
+  "short_name": "簿記2級",
+  "description": "日商簿記2級 対策 一問一答アプリ（商業簿記・工業簿記）",
+  "start_url": "/boki2-app/index.html",
+  "display": "standalone",
+  "background_color": "#0c1838",
+  "theme_color": "#0c1838",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
